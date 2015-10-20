@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="borderRadius" format="dimension" />
+    <attr name="type">
+        <enum name="circle" value="0" />
+        <enum name="round" value="1" />
+    </attr>
+    <attr name="svgRawResourceId" format="reference"></attr>
+
+
+    <declare-styleable name="RoundImage">
+        <attr name="borderRadius" />
+    </declare-styleable>
+
+    <declare-styleable name="SvgImageView">
+        <attr name="svgRawResourceId" />
+    </declare-styleable>
+    <declare-styleable name="TopRoundImageView">
+        <attr name="borderRadius" />
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,1 @@
+@BindById fields 注解的属性不能是private或static. (wang.raye.viewdemo.ui.MainActivity.list)

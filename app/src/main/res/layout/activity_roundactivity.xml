@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <wang.raye.viewlib.RoundImage
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/aa"
+            app:borderRadius="5dip" />
+
+        <wang.raye.viewlib.CircleImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/aa" />
+
+        <wang.raye.viewlib.SvgImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/aa"
+            app:svgRawResourceId="@raw/shape_5" />
+
+        <wang.raye.viewlib.SvgImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/aa"
+            app:svgRawResourceId="@raw/shape_circle_2" />
+
+        <wang.raye.viewlib.SvgImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/aa"
+            app:svgRawResourceId="@raw/shape_flower" />
+
+        <wang.raye.viewlib.SvgImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/aa"
+            app:svgRawResourceId="@raw/shape_heart" />
+
+        <wang.raye.viewlib.SvgImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/aa"
+            app:svgRawResourceId="@raw/shape_star" />
+
+        <wang.raye.viewlib.SvgImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/aa"
+            app:svgRawResourceId="@raw/shape_star_2" />
+
+        <wang.raye.viewlib.SvgImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/aa"
+            app:svgRawResourceId="@raw/shape_star_3" />
+        
+  		<wang.raye.viewlib.TopRoundImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/aa"
+            app:borderRadius="5dip" />
+    </LinearLayout>
+
+</ScrollView>
