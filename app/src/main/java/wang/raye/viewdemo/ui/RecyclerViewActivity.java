@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import wang.raye.preioc.PreIOC;
 import wang.raye.preioc.annotation.BindById;
 import wang.raye.viewdemo.R;
+import wang.raye.viewdemo.bean.DataModel;
 import wang.raye.viewdemo.ui.adapter.RecyclerAdapter;
 
 /**
@@ -35,14 +36,14 @@ public class RecyclerViewActivity extends Activity {
         recyclerView.setLayoutManager(manager);
         //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
         recyclerView.setHasFixedSize(true);
-        ArrayList<Integer> datas = new ArrayList<>();
+        ArrayList<DataModel> datas = new ArrayList<>();
         for(int i = 0;i< 300;i++){
             if(i % 2 == 0){
-                datas.add(R.mipmap.b);
+                datas.add(new DataModel(R.mipmap.b));
             }else if(i % 3 == 0 ){
-                datas.add(R.drawable.aa);
+                datas.add(new DataModel(R.drawable.aa));
             }else{
-                datas.add(R.mipmap.c);
+                datas.add(new DataModel(R.mipmap.c));
             }
         }
         //创建并设置Adapter
@@ -59,5 +60,6 @@ public class RecyclerViewActivity extends Activity {
                 }
             }
         });
+
     }
 }
