@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -53,13 +54,24 @@ public class RecyclerViewActivity extends Activity {
 
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                if(parent.getChildAdapterPosition(view) >= 0){
+                if (parent.getChildAdapterPosition(view) >= 0) {
                     outRect.top = 15;
                     outRect.right = 7;
                     outRect.left = 7;
                 }
             }
         });
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
 
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                Log.i("Raye","dx："+dx+"     dy:"+dy);
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
     }
 }
