@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,6 +20,7 @@ import wang.raye.preioc.annotation.BindById;
 import wang.raye.viewdemo.R;
 import wang.raye.viewdemo.bean.DataModel;
 import wang.raye.viewdemo.ui.adapter.RecyclerAdapter;
+import wang.raye.viewlib.SwipeRefRecyclerView;
 
 /**
  * Created by Raye on 2015/10/20.
@@ -25,8 +28,32 @@ import wang.raye.viewdemo.ui.adapter.RecyclerAdapter;
 public class RecyclerViewActivity extends Activity {
 
     @BindById(R.id.recycler_view)
-    RecyclerView recyclerView;
+    SwipeRefRecyclerView recyclerView;
     private StaggeredGridLayoutManager manager;
+
+    private RecyclerAdapter adapter;
+
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            ArrayList<DataModel> datas = new ArrayList<>();
+            for(int i = 0;i< 20;i++){
+                if(i % 2 == 0){
+                    datas.add(new DataModel(R.mipmap.b));
+                }else if(i % 3 == 0 ){
+                    datas.add(new DataModel(R.drawable.aa));
+                }else{
+                    datas.add(new DataModel(R.mipmap.c));
+                }
+            }
+            if(msg.what == 2) {
+                adapter.addDatas(datas);
+            }else{
+                adapter.setDatas(datas);
+            }
+            recyclerView.loadingFinish();
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +63,9 @@ public class RecyclerViewActivity extends Activity {
         manager = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(manager);
         //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
-        recyclerView.setHasFixedSize(true);
+        recyclerView.getRecyclerView().setHasFixedSize(true);
         ArrayList<DataModel> datas = new ArrayList<>();
-        for(int i = 0;i< 300;i++){
+        for(int i = 0;i< 20;i++){
             if(i % 2 == 0){
                 datas.add(new DataModel(R.mipmap.b));
             }else if(i % 3 == 0 ){
@@ -48,8 +75,9 @@ public class RecyclerViewActivity extends Activity {
             }
         }
         //创建并设置Adapter
-        recyclerView.setAdapter(new RecyclerAdapter(datas));
-        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+        adapter = new RecyclerAdapter(datas);
+        recyclerView.setAdapter(adapter);
+        recyclerView.getRecyclerView().addItemDecoration(new RecyclerView.ItemDecoration() {
 
 
             @Override
@@ -61,17 +89,20 @@ public class RecyclerViewActivity extends Activity {
                 }
             }
         });
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+        recyclerView.setOnRefreshListener(new SwipeRefRecyclerView.OnSwipeRefRecyclerViewListener() {
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
+            public void onRefresh() {
+
+                handler.sendEmptyMessageDelayed(1,1000);
             }
 
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                Log.i("Raye","dx："+dx+"     dy:"+dy);
-                super.onScrolled(recyclerView, dx, dy);
+            public void onLoadMore() {
+
+                handler.sendEmptyMessageDelayed(2,1000);
             }
         });
+
     }
 }

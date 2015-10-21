@@ -62,4 +62,18 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         datas.remove(obejct);
         notifyItemRemoved(position);//Attention!
     }
+
+    public void setDatas(ArrayList<DataModel> datas){
+        this.datas = datas;
+        notifyDataSetChanged();
+    }
+
+    public void addDatas(ArrayList<DataModel> datas){
+        int count = getItemCount();
+        this.datas.addAll(datas);
+        for(int i = count;i < getItemCount();i++){
+            notifyItemInserted(i);
+        }
+
+    }
 }
